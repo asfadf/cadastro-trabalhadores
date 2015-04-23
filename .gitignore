@@ -1,0 +1,16 @@
+/vendor
+/node_modules
+.env
+
+#### joe made this: http://goel.io/joe
+
+#####=== Vagrant ===#####
+.vagrant/
+
+#### joe made this: http://goel.io/joe
+
+#####=== Laravel ===#####
+
+/bootstrap/compiled.php
+.env.*.php
+.env.php
