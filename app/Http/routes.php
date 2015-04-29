@@ -11,6 +11,10 @@
 |
 */
 
-Route::get('/', 'CadastroController@index');
-Route::post('/enviar-cadastro', 'CadastroController@index');
-Route::get('/api/form/fields', 'CadastroController@getFormFields');
+Route::get('/', 'VolunteerController@index');
+
+Route::get('/api/volunteer/fields', 'VolunteerController@getVolunteerFields');
+Route::post('/api/volunteer', 'VolunteerController@addVolunteer');
+
+Route::get('/generate-pdf', 'VolunteerController@generatePDF');
+

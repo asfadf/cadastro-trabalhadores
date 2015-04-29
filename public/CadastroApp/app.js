@@ -1,1 +1,5 @@
-angular.module('CadastroApp', ['inputMask']);
+angular.module('CadastroApp',
+    [
+    'inputBootstrap'
+    ]
+);

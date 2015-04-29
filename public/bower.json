@@ -11,5 +11,9 @@
     "bower_components",
     "test",
     "tests"
-  ]
+  ],
+  "devDependencies": {
+    "angular-input-masks": "~1.4.2",
+    "angular-mask": "~3.0.11"
+  }
 }

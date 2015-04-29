@@ -145,6 +145,9 @@ return [
 		'App\Providers\EventServiceProvider',
 		'App\Providers\RouteServiceProvider',
 
+		/* PDF Provider */
+		'Ignited\Pdf\PdfServiceProvider',
+
 	],
 
 	/*
@@ -192,6 +195,7 @@ return [
 		'URL'       => 'Illuminate\Support\Facades\URL',
 		'Validator' => 'Illuminate\Support\Facades\Validator',
 		'View'      => 'Illuminate\Support\Facades\View',
+		'PDF'       => 'Ignited\Pdf\Facades\Pdf',
 
 	],
 

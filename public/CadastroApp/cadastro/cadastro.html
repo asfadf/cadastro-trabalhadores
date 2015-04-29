@@ -7,33 +7,7 @@
     <!-- {{ field | json }} -->
 
     <div class="col-md-10">
-        <!-- Text, Date, E-mail -->
-        <input ng-if="field.type == 'text' || field.type == 'email' || field.type == 'date'"
-            type="{{ field.type }}" class="form-control"
-            name="{{ field.external_id }}" id="{{ field.external_id }}"
-            ng-required="field.required" mask="{{ field.mask }}"
-            placeholder="{{ field.placeholder }}" ng-model="data[field.external_id]"></input>
-
-        <!-- Single selection -->
-        <div ng-if="field.type == 'category' && !field.settings.multiple" class="radio" ng-repeat="option in field.settings.options">
-            <label>
-                <input type="radio" name="{{ field.external_id }}"
-                    value="{{ option.id }}" ng-required="field.required"
-                    ng-model="data[field.external_id]"> {{ option.text }}
-            </label>
-        </div>
-
-        <!-- Multiple selection -->
-        <div ng-if="field.type == 'category' && field.settings.multiple" class="checkbox" ng-repeat="option in field.settings.options">
-            <label>
-                <input type="checkbox" name="{{ field.external_id }}"
-                    value="{{ option.id }}" ng-required="field.required"
-                    ng-model="data[field.external_id]"> {{ option.text }}
-            </label>
-        </div>
-
-        <!-- Se existir texto explicativo, mostra -->
-        <span ng-if="field.description" class="help-block">{{ field.description }}</span>
+        <inputx ng-model="data[field.external_id]" field="field"></inputx>
     </div>
 </div>
 

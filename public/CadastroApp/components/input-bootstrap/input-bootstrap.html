@@ -1,0 +1,52 @@
+<div class="form-group" ng-class="{'has-error': form[field.external_id].$invalid &&
+(!form[field.external_id].$pristine || form.$submitted)}">
+
+    <label class="control-label col-md-2" for="{{ field.external_id }}">
+        {{ field.label }}
+        <span ng-if="field.required" class="text-danger">*</span>
+    </label>
+
+    <!-- {{ field | json }} -->
+
+    <div class="col-md-10">
+
+        <!-- Text, Date, E-mail -->
+        <input ng-if="field.type == 'text' || field.type == 'email' || field.type == 'date'"
+            type="{{ field.type != 'email' ? 'text' : 'email' }}" class="form-control"
+            name="{{ field.external_id }}" id="{{ field.external_id }}"
+            ng-required="field.required" mask="{{ field.mask }}"
+            placeholder="{{ field.placeholder }}" ng-model="input.selected"
+            maxlength="{{ field.mask.length || '' }}"></input>
+
+        <!-- Single selection -->
+        <div ng-if="field.type == 'category' && !field.settings.multiple" class="radio"
+        ng-repeat="option in field.settings.options" ng-form="{{ field.external_id }}">
+            <label>
+                <input type="radio" name="{{ field.external_id }}"
+                    value="{{ option.id }}" ng-required="field.required"
+                    ng-click="addSingleSelectionAsInt(option.id)">
+                    {{ option.text }}
+            </label>
+        </div>
+
+        <!-- Multiple selection -->
+        <div ng-if="field.type == 'category' && field.settings.multiple" class="checkbox col-md-4"
+        ng-repeat="option in field.settings.options" ng-form="{{ field.external_id }}">
+            <label>
+                <input type="checkbox" name="{{ field.external_id }}"
+                    value="{{ option.id }}" ng-required="field.required"
+                    ng-true-value="{{ option.id }}"
+                    ng-click="addMultipleSelectionAsInt(option.id)">
+                    {{ option.text }}
+            </label>
+        </div>
+
+        <!-- Se existir texto explicativo, mostra -->
+        <span ng-if="field.description" class="help-block">{{ field.description }}</span>
+
+        <p ng-show="form[field.external_id].$invalid && (!form[field.external_id].$pristine || form.$submitted)" class="help-block">
+            Campo "{{ field.label }}" inválido
+        </p>
+        <!-- {{ form[field.external_id] | json}} -->
+    </div>
+</div>

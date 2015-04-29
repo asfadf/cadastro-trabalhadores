@@ -4,34 +4,32 @@ angular.module('CadastroApp')
 
     $scope.fields = [];
 
+    $scope.showForm = false;
+
     $scope.trabalhador = {};
 
-    $http.get('/api/form/fields').then(function(response) {
+    $http.get('/api/volunteer/fields').then(function(response) {
         $scope.fields = response.data;
+        $scope.showForm = true;
     });
 
+    var parseVolunteerValues = function() {
+        $scope.trabalhador;
+    };
+
     $scope.submitForm = function () {
-        console.log($scope.trabalhador);
+
+        $http.post('/api/volunteer', $scope.trabalhador).then(function(response) {
+            window.location = '/generate-pdf';
+        });
     }
 
-})
-
-.directive('form', function() {
-    return {
-        restrict: 'E',
-        scope: {fields: '=', data: '=', form: '=name'},
-        templateUrl: 'CadastroApp/cadastro/cadastro.html',
-        link: function(scope, element, attributes) {
-
-            // Workaround para manter ordem dos campos
-            scope.notSorted = function(obj) {
-                if (!obj) {
-                    return [];
-                }
-
-                return Object.keys(obj);
-            }
-
+    $scope.notSorted = function(obj) {
+        if (!obj) {
+            return [];
         }
-    }
+
+        return Object.keys(obj);
+    };
+
 });
